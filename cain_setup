@@ -1,0 +1,149 @@
+<drac2>
+#This alias is for CAIN
+
+#alias context and information
+aliasName=ctx.alias+" setup"
+
+#argument parsing
+args=&ARGS&
+parsed=argparse(&ARGS&)
+
+if len(args)<1:
+    return f'''embed -title "CAIN Set-up" -desc "You have input no edits." -footer "!{aliasName}" -color {color} -thumb {image}'''
+
+#for timeout
+time_out = int(0) if ("retain" in parsed) else int(60)
+
+# --- exorcist profile ---
+
+#if the cvars already exist, load them, OTHERWISE give an INC result for the default value
+if exists ("exor_stat"):
+    old_exor_stat=load_json(get("exor_stat"))
+    old_exorcist_name=str(old_exor_stat[0])
+    old_xid=str(old_exor_stat[1])
+    old_a_name=str(old_exor_stat[2])
+    old_agenda=str(old_exor_stat[3])
+    old_blasphemy=str(old_exor_stat[4])
+    old_sex=str(old_exor_stat[5])
+    old_height=str(old_exor_stat[6])
+    old_weight=str(old_exor_stat[7])
+    old_hair=str(old_exor_stat[8])
+    old_eyes=str(old_exor_stat[9])
+    old_virtue=str(old_exor_stat[10])
+else:
+    old_exorcist_name=""
+    old_xid=""
+    old_a_name=""
+    old_agenda=""
+    old_blasphemy=""
+    old_sex=""
+    old_height=""
+    old_weight=""
+    old_hair=""
+    old_eyes=""
+    old_virtue=""
+
+exorcist_name=parsed.last('exorname', default=old_exorcist_name, type_=str)
+xid=parsed.last('xid', default=old_xid, type_=str)
+a_name=parsed.last('name', default=old_a_name, type_=str)
+agenda=parsed.last('agenda', default=old_agenda, type_=str)
+blasphemy=parsed.last('blasphemy', default=old_blasphemy, type_ =str)
+sex=parsed.last('sx', default=old_sex, type_=str)
+height=parsed.last('height', default=old_height, type_=str)
+weight=parsed.last('weight', default=old_weight, type_=str)
+hair=parsed.last('hair', default=old_hair, type_=str)
+eyes=parsed.last('eyes', default=old_eyes, type_=str)
+virtue=parsed.last('virtue', default=old_virtue, type_=str)
+
+exor_stat=[]
+exor_stat.append(exorcist_name)
+exor_stat.append(xid)
+exor_stat.append(a_name)
+exor_stat.append(agenda)
+exor_stat.append(blasphemy)
+exor_stat.append(sex)
+exor_stat.append(height)
+exor_stat.append(weight)
+exor_stat.append(hair)
+exor_stat.append(eyes)
+exor_stat.append(virtue)
+character().set_cvar("exor_stat", dump_json(exor_stat))
+
+# ---exorcist statistics---
+if exists("cain_stat"):
+    old_cain_stat=load_json(get("cain_stat"))
+    old_category=int(old_cain_stat[0])
+    old_psyche=int(old_cain_stat[1])
+    old_current_sin=int(old_cain_stat[2])
+    old_divine_agony=int(old_cain_stat[3])
+    old_current_stress=int(old_cain_stat[4])
+    old_current_injuries=int(old_cain_stat[5])
+    old_current_kp=int(old_cain_stat[6])
+    old_current_xp=int(old_cain_stat[7])
+    old_advances=int(old_cain_stat[8])
+    old_scrip=int(old_cain_stat[9])
+else:
+    old_category=1
+    old_psyche=3
+    old_current_sin=0
+    old_divine_agony=0
+    old_current_stress=0
+    old_current_injuries=0
+    old_current_kp=5
+    old_current_xp=0
+    old_advances=0
+    old_scrip=0
+
+category=parsed.last('cat', default=old_category, type_=int)
+psyche=parsed.last('psyche', default=old_psyche, type_=int)
+current_sin=parsed.last('sin', default=old_current_sin, type_=int)
+divine_agony=parsed.last('agony', default=old_divine_agony, type_=int)
+current_stress=parsed.last('stress', default=old_current_stress, type_=int)
+current_injuries=parsed.last('injury', default=old_current_injuries, type_=int)
+current_kp=parsed.last('kp', default=old_current_kp, type_=int)
+current_xp=parsed.last('xp', default=old_current_xp, type_=int)
+advances=parsed.last('advances', default=old_advances, type_=int)
+scrip=parsed.last('scrip', default=old_scrip, type_=int)
+
+cain_stat=[]
+cain_stat.append(category)
+cain_stat.append(psyche)
+cain_stat.append(current_sin)
+cain_stat.append(divine_agony)
+cain_stat.append(current_stress)
+cain_stat.append(current_injuries)
+cain_stat.append(current_kp)
+cain_stat.append(current_xp)
+cain_stat.append(advances)
+cain_stat.append(scrip)
+character().set_cvar("cain_stat", dump_json(cain_stat))
+
+# ---exorcist caps---
+if exists("cain_caps"):
+    old_cain_caps=load_json(get("cain_caps"))
+    old_stress_cap=old_cain_caps[0]
+    old_sin_cap=old_cain_caps[1]
+    old_kp_cap=old_cain_caps[2]
+    old_xp_cap=old_cain_caps[3]
+else:
+    old_stress_cap=6
+    old_sin_cap=10
+    old_kp_cap=5
+    old_xp_cap=4
+
+stress_cap=parsed.last('stresscap', default=old_stress_cap, type_=int)
+sin_cap=parsed.last('sincap', default=old_sin_cap, type_=int)
+kp_cap=parsed.last('kpcap', default=old_kp_cap, type_=int)
+xp_cap=parsed.last('xpcap', default=old_xp_cap, type_=int)
+
+cain_caps=[]
+cain_caps.append(stress_cap)
+cain_caps.append(sin_cap)
+cain_caps.append(kp_cap)
+cain_caps.append(xp_cap)
+character().set_cvar("cain_caps", dump_json(cain_caps))
+
+# ---display---
+return f'''embed -title "{exorcist_name} (CAT {category}) | XID: {xid} | PERSONNEL FILE" -desc "*`File has been successfully edited.`*" -f "Basic Information | **Name:** {a_name}\n**Sex:** {sex}\n**Height:** {height}\n**Weight:** {weight}\n**Hair:** {hair}\n**Eyes:** {eyes}\n**Agenda:** {agenda}\n**Blasphemy:** {blasphemy}\n**Virtue:** {virtue}" -f "Psyche Bursts | {psyche}/3|inline" -f "Current Sin | {current_sin}/{sin_cap}|inline" -f "Divine Agony | {divine_agony}/3|inline" -f "Execution Talisman | {current_stress}/{stress_cap}|inline" -f "Injuries | {current_injuries}|inline" -f "Kit Points | {current_kp}/{kp_cap}|inline" -f "XP Count | {current_xp}/{xp_cap}|inline" -f "Advances | {advances}|inline" -f "Scrip | {scrip}|inline" -footer "!{aliasName}" -color {color} -thumb {image} -t {time_out}
+'''
+</drac2>
