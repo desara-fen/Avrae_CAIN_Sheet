@@ -20,6 +20,7 @@ if exists ("exor_stat"):
     hair=str(exor_stat[8])
     eyes=str(exor_stat[9])
     virtue=str(exor_stat[10])
+    sheet_link=str(exor_stat[11])
 else:
     return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
 
@@ -50,6 +51,6 @@ else:
     return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
 
 # ---display---
-return f'''embed -title "{exorcist_name} (CAT {category}) | XID: {xid} | STATUS LOG" -desc "**Name:** {a_name}\n**Agenda:** {agenda}\n**Blasphemy:** {blasphemy}\n**Virtue:** {virtue}" -f "Psyche Bursts | {psyche}/3|inline" -f "Current Sin | {current_sin}/{sin_cap}|inline" -f "Divine Agony | {divine_agony}/3|inline" -f "Execution Talisman | {current_stress}/{stress_cap}|inline" -f "Injuries | {current_injuries}|inline" -f "Kit Points | {current_kp}/{kp_cap}|inline" -f "XP Count | {current_xp}/{xp_cap}|inline" -f "Advances | {advances}|inline" -f "Scrip | {scrip}|inline" -footer "!{aliasName}" -color {color} -thumb {image}
+return f'''embed -title "{exorcist_name} (CAT {category}) | XID: {xid} | STATUS LOG" -desc "**Name:** {a_name}\n**Agenda:** {agenda}\n**Blasphemy:** {blasphemy}\n**Virtue:** {virtue}\n\n-# **Exorcist Thread:** {thread_link}" -f "Psyche Bursts | {psyche}/3|inline" -f "Current Sin | {current_sin}/{sin_cap}|inline" -f "Divine Agony | {divine_agony}/3|inline" -f "Execution Talisman | {current_stress}/{stress_cap}|inline" -f "Injuries | {current_injuries}|inline" -f "Kit Points | {current_kp}/{kp_cap}|inline" -f "XP Count | {current_xp}/{xp_cap}|inline" -f "Advances | {advances}|inline" -f "Scrip | {scrip}|inline" -footer "!{aliasName}" -color {color} -thumb {image}
 '''
 </drac2>
