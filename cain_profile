@@ -20,6 +20,7 @@ if exists ("exor_stat"):
     hair=str(exor_stat[8])
     eyes=str(exor_stat[9])
     virtue=str(exor_stat[10])
+    sheet_link=str(exor_stat[11])
 else:
     return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
 
@@ -30,6 +31,6 @@ else:
     return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
 
 # ---display---
-return f'''embed -title "{exorcist_name} (CAT {category}) | XID: {xid} | PERSONNEL FILE" -desc "△ AS ABOVE, SO BELOW ▼" -f "Basic Information | **Name:** {a_name}\n**Sex:** {sex}\n**Height:** {height}\n**Weight:** {weight}\n**Hair:** {hair}\n**Eyes:** {eyes}\n**Agenda:** {agenda}\n**Blasphemy:** {blasphemy}\n**Virtue:** {virtue}" -footer "!{aliasName}" -color {color} -thumb {image}
+return f'''embed -title "{exorcist_name} (CAT {category}) | XID: {xid} | PERSONNEL FILE" -desc "△ AS ABOVE, SO BELOW ▼" -f "Basic Information | **Name:** {a_name}\n**Sex:** {sex}\n**Height:** {height}\n**Weight:** {weight}\n**Hair:** {hair}\n**Eyes:** {eyes}\n**Agenda:** {agenda}\n**Blasphemy:** {blasphemy}\n**Virtue:** {virtue}\n\n-# **Sheet Link:** {sheet_link}" -footer "!{aliasName}" -color {color} -thumb {image}
 '''
 </drac2>
