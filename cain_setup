@@ -30,6 +30,7 @@ if exists ("exor_stat"):
     old_hair=str(old_exor_stat[8])
     old_eyes=str(old_exor_stat[9])
     old_virtue=str(old_exor_stat[10])
+    old_sheet_link=str(old_exor_stat[11])
 else:
     old_exorcist_name=""
     old_xid=""
@@ -42,6 +43,7 @@ else:
     old_hair=""
     old_eyes=""
     old_virtue=""
+    old_thread_link=""
 
 exorcist_name=parsed.last('exorname', default=old_exorcist_name, type_=str)
 xid=parsed.last('xid', default=old_xid, type_=str)
@@ -54,6 +56,7 @@ weight=parsed.last('weight', default=old_weight, type_=str)
 hair=parsed.last('hair', default=old_hair, type_=str)
 eyes=parsed.last('eyes', default=old_eyes, type_=str)
 virtue=parsed.last('virtue', default=old_virtue, type_=str)
+sheet_link=parsed.last('sheet', default=old_sheet_link, type_=str)
 
 exor_stat=[]
 exor_stat.append(exorcist_name)
@@ -67,6 +70,7 @@ exor_stat.append(weight)
 exor_stat.append(hair)
 exor_stat.append(eyes)
 exor_stat.append(virtue)
+exor_stat.append(sheet_link)
 character().set_cvar("exor_stat", dump_json(exor_stat))
 
 # ---exorcist statistics---
@@ -144,6 +148,6 @@ cain_caps.append(xp_cap)
 character().set_cvar("cain_caps", dump_json(cain_caps))
 
 # ---display---
-return f'''embed -title "{exorcist_name} (CAT {category}) | XID: {xid} | PERSONNEL FILE" -desc "*`File has been successfully edited.`*" -f "Basic Information | **Name:** {a_name}\n**Sex:** {sex}\n**Height:** {height}\n**Weight:** {weight}\n**Hair:** {hair}\n**Eyes:** {eyes}\n**Agenda:** {agenda}\n**Blasphemy:** {blasphemy}\n**Virtue:** {virtue}" -f "Psyche Bursts | {psyche}/3|inline" -f "Current Sin | {current_sin}/{sin_cap}|inline" -f "Divine Agony | {divine_agony}/3|inline" -f "Execution Talisman | {current_stress}/{stress_cap}|inline" -f "Injuries | {current_injuries}|inline" -f "Kit Points | {current_kp}/{kp_cap}|inline" -f "XP Count | {current_xp}/{xp_cap}|inline" -f "Advances | {advances}|inline" -f "Scrip | {scrip}|inline" -footer "!{aliasName}" -color {color} -thumb {image} -t {time_out}
+return f'''embed -title "{exorcist_name} (CAT {category}) | XID: {xid} | PERSONNEL FILE" -desc "*`File has been successfully edited.`*" -f "Basic Information | **Name:** {a_name}\n**Sex:** {sex}\n**Height:** {height}\n**Weight:** {weight}\n**Hair:** {hair}\n**Eyes:** {eyes}\n**Agenda:** {agenda}\n**Blasphemy:** {blasphemy}\n**Virtue:** {virtue}\n\n-# **Exorcist Thread:** {thread_link}" -f "Psyche Bursts | {psyche}/3|inline" -f "Current Sin | {current_sin}/{sin_cap}|inline" -f "Divine Agony | {divine_agony}/3|inline" -f "Execution Talisman | {current_stress}/{stress_cap}|inline" -f "Injuries | {current_injuries}|inline" -f "Kit Points | {current_kp}/{kp_cap}|inline" -f "XP Count | {current_xp}/{xp_cap}|inline" -f "Advances | {advances}|inline" -f "Scrip | {scrip}|inline" -footer "!{aliasName}" -color {color} -thumb {image} -t {time_out}
 '''
 </drac2>
