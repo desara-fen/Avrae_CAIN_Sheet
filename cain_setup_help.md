@@ -1,8 +1,11 @@
 This alias setups the necessary information for you to be able to use `!cain` and its other subaliases.
-> **Note**: Before running this alias, you need to `!import` a character through Avrae since it will attach the information to that particular character. For this, you can make a copy of this [modified gsheet](https://docs.google.com/spreadsheets/d/1gMU3bz5iyONDCOcNyYuYLpztb_8RdL6GaI50PhUkTq0/edit?usp=sharing) that has both the typical Avrae Gsheet information (v1.14) and a few tabs for your CAIN character taken from <@465192139987615765>'s [v1 CAIN Character Gsheet](https://discord.com/channels/426286410496999425/1277789952817627136/1277789952817627136). The necessary fields for the sheet to be valid in Avrae have already been filled out.
+
+**Note**: Before running this alias, you need to `!import` a character through Avrae since it will attach the information to that particular character. For this, you can make a copy of this [modified gsheet](https://docs.google.com/spreadsheets/d/1gMU3bz5iyONDCOcNyYuYLpztb_8RdL6GaI50PhUkTq0/edit?usp=sharing) that has both the typical Avrae Gsheet information (v1.14) and a few tabs for your CAIN character taken from <@465192139987615765>'s [v1 CAIN Character Gsheet](https://discord.com/channels/426286410496999425/1277789952817627136/1277789952817627136). The necessary fields for the sheet to be valid in Avrae have already been filled out.
+
+You do NOT have to use this gsheet for your actual CAIN sheet, but you need to load it as a 'character' so the alias has a 'character' to attach information to.
 ** **
 **Full Syntax:**
-```!cain setup -exorname <exorcist_name> -xid <xid> -name <actual_name> -agenda <agenda> -blasphemy <blasphemy> -sx <exorcist_sex> -height <height> -weight <weight> -hair <hair> -eyes <eyes> -cat <category> -psyche <current_psyche> -sin <current_sin> -sincap <sin_cap> -agony <divine_agony> -stress <current_stress> -stresscap <stress_cap> -kp <current_kp> -xp <current_xp> -xpcap <xp_cap> -advances <advancements> -scrip <current_scrip> [retain]```
+```!cain setup -exorname <exorcist_name> -xid <xid> -name <actual_name> -agenda <agenda> -blasphemy <blasphemy> -sx <exorcist_sex> -height <height> -weight <weight> -hair <hair> -eyes <eyes> -virtue <virtue> -sheet <sheet_link> -cat <category> -psyche <current_psyche> -sin <current_sin> -sincap <sin_cap> -agony <divine_agony> -stress <current_stress> -stresscap <stress_cap> -kp <current_kp> -xp <current_xp> -xpcap <xp_cap> -advances <advancements> -scrip <current_scrip> [retain]```
 ** **
 All flag arguments are optional, but if you enter none, the alias will output that you've done no edits.
 ** **
@@ -25,6 +28,7 @@ __String Arguments__
 - `-hair` - hair color
 - `-eyes` - eye color
 - `-virtue` - the virtue your exorcist follows, if any
+- `-sheet` - the link to your exorcist's sheet
 ** **
 __Integer Arguments__
 *Numbers only.*
