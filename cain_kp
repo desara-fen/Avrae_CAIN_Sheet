@@ -1,0 +1,134 @@
+<drac2>
+#This alias is for CAIN
+# modifying KP
+
+#alias context and information
+aliasName=ctx.alias
+
+#argument parsing
+args=&ARGS&
+
+# ---exorcist statistics---
+#if the cvars already exist, load them, OTHERWISE give an INC result for the default value
+if exists ("exor_stat"):
+    exor_stat=load_json(get("exor_stat"))
+    if len(exor_stat)<12:
+        exorcist_name=str(exor_stat[0])
+        xid=str(exor_stat[1])
+        a_name=str(exor_stat[2])
+        agenda=str(exor_stat[3])
+        blasphemy=str(exor_stat[4])
+        sex=str(exor_stat[5])
+        height=str(exor_stat[6])
+        weight=str(exor_stat[7])
+        hair=str(exor_stat[8])
+        eyes=str(exor_stat[9])
+        virtue=str(exor_stat[10])
+        sheet_link=""
+    else:
+        exorcist_name=str(exor_stat[0])
+        xid=str(exor_stat[1])
+        a_name=str(exor_stat[2])
+        agenda=str(exor_stat[3])
+        blasphemy=str(exor_stat[4])
+        sex=str(exor_stat[5])
+        height=str(exor_stat[6])
+        weight=str(exor_stat[7])
+        hair=str(exor_stat[8])
+        eyes=str(exor_stat[9])
+        virtue=str(exor_stat[10])
+        sheet_link=str(exor_stat[11])
+else:
+    return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
+
+# ---exorcist statistics---
+if exists("cain_stat"):
+    old_cain_stat=load_json(get("cain_stat"))
+    old_category=int(old_cain_stat[0])
+    old_psyche=int(old_cain_stat[1])
+    old_current_sin=int(old_cain_stat[2])
+    old_divine_agony=int(old_cain_stat[3])
+    old_current_stress=int(old_cain_stat[4])
+    old_current_injuries=int(old_cain_stat[5])
+    old_current_kp=int(old_cain_stat[6])
+    old_current_xp=int(old_cain_stat[7])
+    old_advances=int(old_cain_stat[8])
+    old_scrip=int(old_cain_stat[9])
+else:
+    return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
+
+# ---exorcist caps---
+if exists("cain_caps"):
+    cain_caps=load_json(get("cain_caps"))
+    stress_cap=cain_caps[0]
+    sin_cap=cain_caps[1]
+    kp_cap=cain_caps[2]
+    xp_cap=cain_caps[3]
+else:
+    return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
+
+category=old_category
+psyche = old_psyche
+current_sin=old_current_sin
+divine_agony=old_divine_agony
+current_stress=old_current_stress
+current_injuries=old_current_injuries
+current_kp=old_current_kp
+current_xp=old_current_xp
+advances=old_advances
+scrip=old_scrip
+if len(args)<1:
+    return f'''embed -title "CAIN STATUS EDIT" -desc "*You have input no edits.*\n**{exorcist_name} (CAT {category}) | XID: {xid}**\n**Kit Points:** {old_current_kp}/{kp_cap} → {current_kp}/{kp_cap}\n\n-# △ AS ABOVE, SO BELOW ▼" -footer "!{aliasName}" -color {color} -thumb {image}'''
+
+adjustment = args[0]
+operator = adjustment[0]
+valid_operators = ['+', '-']
+new_val = adjustment[1:]
+
+if not operator in valid_operators:
+    return f'''embed -title "CAIN STATUS EDIT" -desc "Incorrect operator. Please use either `-` or `+`, for example: `{aliasName} +X`" -footer "!{aliasName}" -color {color} -thumb {image}'''
+
+if not new_val.isdecimal():
+    return f'''embed -title "CAIN STATUS EDIT" -desc "Incorrect amount. Please input a valid integer, for example `!{aliasName} +1`" -footer "!{aliasName}" -color {color} -thumb {image}'''
+
+if not operator == "+" :
+    multiplier=-1
+else:
+    multiplier=1
+
+# adjusting psyche in this alias
+current_kp=old_current_kp + (multiplier * int(new_val))
+
+# warnings
+warning=""
+#if int(current_kp)<0:
+    #warning=f''':warning: `insufficient KP`'''
+
+# other values in the cvar
+category=old_category
+psyche=old_psyche
+current_sin=old_current_sin
+divine_agony=old_divine_agony
+current_stress=old_current_stress
+current_injuries=old_current_injuries
+current_xp=old_current_xp
+advances=old_advances
+scrip=old_scrip
+
+cain_stat=[]
+cain_stat.append(category)
+cain_stat.append(psyche)
+cain_stat.append(current_sin)
+cain_stat.append(divine_agony)
+cain_stat.append(current_stress)
+cain_stat.append(current_injuries)
+cain_stat.append(current_kp)
+cain_stat.append(current_xp)
+cain_stat.append(advances)
+cain_stat.append(scrip)
+character().set_cvar("cain_stat", dump_json(cain_stat))
+
+# ---display---
+return f'''embed -title "CAIN STATUS EDIT" -desc "**{exorcist_name} (CAT {category}) | XID: {xid}**\n **Kit Points:** {old_current_kp}/{kp_cap} → {current_kp}/{kp_cap}{warning}\n\n-# △ AS ABOVE, SO BELOW ▼" -footer "!{aliasName}" -color {color} -thumb {image}
+'''
+</drac2>
