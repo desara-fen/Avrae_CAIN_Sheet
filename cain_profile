@@ -9,18 +9,32 @@ aliasName=ctx.alias+" profile"
 #if the cvars already exist, load them, OTHERWISE give an INC result for the default value
 if exists ("exor_stat"):
     exor_stat=load_json(get("exor_stat"))
-    exorcist_name=str(exor_stat[0])
-    xid=str(exor_stat[1])
-    a_name=str(exor_stat[2])
-    agenda=str(exor_stat[3])
-    blasphemy=str(exor_stat[4])
-    sex=str(exor_stat[5])
-    height=str(exor_stat[6])
-    weight=str(exor_stat[7])
-    hair=str(exor_stat[8])
-    eyes=str(exor_stat[9])
-    virtue=str(exor_stat[10])
-    sheet_link=str(exor_stat[11])
+    if len(exor_stat)<12:
+        exorcist_name=str(exor_stat[0])
+        xid=str(exor_stat[1])
+        a_name=str(exor_stat[2])
+        agenda=str(exor_stat[3])
+        blasphemy=str(exor_stat[4])
+        sex=str(exor_stat[5])
+        height=str(exor_stat[6])
+        weight=str(exor_stat[7])
+        hair=str(exor_stat[8])
+        eyes=str(exor_stat[9])
+        virtue=str(exor_stat[10])
+        sheet_link=""
+    else:
+        exorcist_name=str(exor_stat[0])
+        xid=str(exor_stat[1])
+        a_name=str(exor_stat[2])
+        agenda=str(exor_stat[3])
+        blasphemy=str(exor_stat[4])
+        sex=str(exor_stat[5])
+        height=str(exor_stat[6])
+        weight=str(exor_stat[7])
+        hair=str(exor_stat[8])
+        eyes=str(exor_stat[9])
+        virtue=str(exor_stat[10])
+        sheet_link=str(exor_stat[11])
 else:
     return f'''embed -title "CAIN" -desc "You have not yet set-up your exorcist profile. Please run `!cain setup` to do so." -footer "!{aliasName}" -color {color} -thumb {image}'''
 
