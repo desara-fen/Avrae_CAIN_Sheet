@@ -19,18 +19,32 @@ time_out = int(0) if ("retain" in parsed) else int(60)
 #if the cvars already exist, load them, OTHERWISE give an INC result for the default value
 if exists ("exor_stat"):
     old_exor_stat=load_json(get("exor_stat"))
-    old_exorcist_name=str(old_exor_stat[0])
-    old_xid=str(old_exor_stat[1])
-    old_a_name=str(old_exor_stat[2])
-    old_agenda=str(old_exor_stat[3])
-    old_blasphemy=str(old_exor_stat[4])
-    old_sex=str(old_exor_stat[5])
-    old_height=str(old_exor_stat[6])
-    old_weight=str(old_exor_stat[7])
-    old_hair=str(old_exor_stat[8])
-    old_eyes=str(old_exor_stat[9])
-    old_virtue=str(old_exor_stat[10])
-    old_sheet_link=str(old_exor_stat[11])
+    if len(old_exor_stat)<12:
+        old_exorcist_name=str(old_exor_stat[0])
+        old_xid=str(old_exor_stat[1])
+        old_a_name=str(old_exor_stat[2])
+        old_agenda=str(old_exor_stat[3])
+        old_blasphemy=str(old_exor_stat[4])
+        old_sex=str(old_exor_stat[5])
+        old_height=str(old_exor_stat[6])
+        old_weight=str(old_exor_stat[7])
+        old_hair=str(old_exor_stat[8])
+        old_eyes=str(old_exor_stat[9])
+        old_virtue=str(old_exor_stat[10])
+        old_sheet_link=""
+    else:
+        old_exorcist_name=str(old_exor_stat[0])
+        old_xid=str(old_exor_stat[1])
+        old_a_name=str(old_exor_stat[2])
+        old_agenda=str(old_exor_stat[3])
+        old_blasphemy=str(old_exor_stat[4])
+        old_sex=str(old_exor_stat[5])
+        old_height=str(old_exor_stat[6])
+        old_weight=str(old_exor_stat[7])
+        old_hair=str(old_exor_stat[8])
+        old_eyes=str(old_exor_stat[9])
+        old_virtue=str(old_exor_stat[10])
+        old_sheet_link=str(old_exor_stat[11])
 else:
     old_exorcist_name=""
     old_xid=""
@@ -43,7 +57,7 @@ else:
     old_hair=""
     old_eyes=""
     old_virtue=""
-    old_thread_link=""
+    old_sheet_link=""
 
 exorcist_name=parsed.last('exorname', default=old_exorcist_name, type_=str)
 xid=parsed.last('xid', default=old_xid, type_=str)
