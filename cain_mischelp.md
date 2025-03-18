@@ -39,9 +39,11 @@ A character sheet alias for [Tom Bloom's CAIN](<https://tombloom.itch.io/cain/>)
 - `!kp +/-X` - modifies kit points quickly
 - `!log` - displays a condensed status log
 ---
+
 **Changelog:**
 v0.1 - released with the base `!cain` aliases and its subaliases
 v0.2 - released `!pb`, `!sin`, `!da`, `!stress`, `!kp`, and `!log` for quicker edits during live play
+
 ---
 **[View the code here!](<https://github.com/desara-fen/Avrae_CAIN_Sheet/tree/main>)**
 -# But please don't judge my terrible coding skills
